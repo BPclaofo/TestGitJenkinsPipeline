@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="private_gestatus">
+    <CLASSES />
+    <JAVADOC />
+    <NATIVE>
+      <root url="file://$PROJECT_DIR$/../../../MRS Project/DRMAA/drmaa-master/gestatus/private_gestatus" />
+      <root url="file://$PROJECT_DIR$/../../../MRS Project/DRMAA/drmaa-master" />
+    </NATIVE>
+    <SOURCES />
+  </library>
+</component>

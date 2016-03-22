@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="drmaa-master">
+    <CLASSES />
+    <JAVADOC />
+    <NATIVE>
+      <root url="file://$PROJECT_DIR$/../../../MRS Project/DRMAA/drmaa-master" />
+    </NATIVE>
+    <SOURCES />
+  </library>
+</component>

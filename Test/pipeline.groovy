@@ -18,9 +18,10 @@ for (int i = 0; i < splits.size(); i++) {
             if (v) {
                 echo "Building version ${v}"
             }
-            withEnv(["PATH+MAVEN=${tool 'DefaultMaven'}/bin"]){
-                bat 'mvn -B verify -Dmaven.test.failure.ignore verify'
-            }
+            //withEnv(["PATH+MAVEN=${tool 'DefaultMaven'}/bin"]){
+                //bat 'mvn -B verify -Dmaven.test.failure.ignore verify'
+                bat "${tool 'DefaultMaven'}/bin/mvn -B -Dmaven.test.failure.ignore test"
+            //}
             step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerprint: true])
             step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
         }

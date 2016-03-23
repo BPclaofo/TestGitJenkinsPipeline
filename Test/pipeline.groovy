@@ -27,6 +27,11 @@ for (int i = 0; i < splits.size(); i++) {
 }
 parallel branches
 
+node {
+    git 'https://github.com/BPclaofo/TestSideGitJenkinsPlugin.git'
+    load 'Main/HelloWorld.groovy'
+}()
+
 @NonCPS
 def version(text) {
     def matcher = text =~ '<version>(.+)</version>'

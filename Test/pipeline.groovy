@@ -1,6 +1,6 @@
 echo 'hello from Pipeline'
 node('master') {
-    input 'Run job?'
+    // input 'Run job?'
     git url: 'https://github.com/BPclaofo/parallel-test-executor-plugin-sample.git'
     stash includes: 'pom.xml, src/', name: 'GitFiles'
 }

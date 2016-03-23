@@ -1,4 +1,5 @@
 node('master') {
+    echo "The job is starting."
     git url: 'https://github.com/BPclaofo/parallel-test-executor-plugin-sample.git'
     stash includes: 'pom.xml, src/', name: 'GitFiles'
 }

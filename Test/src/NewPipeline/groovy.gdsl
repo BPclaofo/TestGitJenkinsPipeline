@@ -1,3 +1,4 @@
+package NewPipeline
 echo 'hello from Pipeline'
 echo TestParam
 node('master') {
@@ -20,7 +21,7 @@ node('master') {
 @NonCPS
 def version(text) {
     def matcher = text =~ '<version>(.+)</version>'
-    matcher ? matcher[0][1] : null
+    matcher ? matcher["0"]["1"] : null
 }
 
 node('slave') {

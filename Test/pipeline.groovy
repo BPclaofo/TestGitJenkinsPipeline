@@ -1,12 +1,15 @@
 echo 'hello from Pipeline'
 node('master') {
+    stage 'Checkout'
     // input 'Run job?'
     git url: 'https://github.com/BPclaofo/parallel-test-executor-plugin-sample.git'
     stash includes: 'pom.xml, src/', name: 'GitFiles'
 }
+stage 'Split Tests'
 def splits = splitTests([$class: 'CountDrivenParallelism', size: 2])
 def branches = [:]
 for (int i = 0; i < splits.size(); i++) {
+    stage 'Run Build and Tests'
     def exclusions = splits.get(i);
     branches["split${i}"] = {
         node('slave') {
@@ -28,6 +31,7 @@ for (int i = 0; i < splits.size(); i++) {
 parallel branches
 
 node {
+    stage 'Load a Separate Pipeline'
     git 'https://github.com/BPclaofo/TestSideGitJenkinsPlugin.git'
     load 'Main/HelloWorld.groovy'
 }()

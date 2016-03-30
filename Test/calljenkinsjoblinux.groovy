@@ -19,9 +19,8 @@ stage 'Run Jobs in Parallel'
 node ('master') {
     try {
         sh "HTTPrep=`curl -s -w %{http_code} -X POST http://reuxgbls535.bp.com:8110/jenkin/job/FirstTest/buildWithParameters?Parameter=${Parameter2}`; if [ \$HTTPrep = 201 ]; then exit 0; else exit \$HTTPrep; fi"
-    } catch (e) {
-        def w = new StringWriter()
-        e.printStackTrace(new PrintWriter(w))
+    } catch (err) {
+        echo "Failed: ${err}"
     }
     sh "HTTPrep=`curl -s -w %{http_code} -X POST http://reuxgbls535.bp.com:8110/jenkins/job/SecondTest/buildWithParameters?Parameter=${Parameter3}`; if [ \$HTTPrep = 201 ]; then exit 0; else exit \$HTTPrep; fi"
 }
